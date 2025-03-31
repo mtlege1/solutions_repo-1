@@ -131,8 +131,25 @@ where \( G \) is the gravitational constant.
 
 ## **5. Python Implementation**
 
-```python
 import numpy as np
+import matplotlib.pyplot as plt
+
+def projectile_range(v0, theta, g=9.81):
+    return (v0**2 * np.sin(2 * np.radians(theta))) / g
+
+angles = np.linspace(0, 90, 100)
+v0 = 20  # Initial velocity in m/s
+ranges = projectile_range(v0, angles)
+
+plt.figure(figsize=(8,6))
+plt.plot(angles, ranges, label=f'Initial Velocity = {v0} m/s')
+plt.axvline(45, color='r', linestyle='--', label='Optimal Angle')
+plt.xlabel("Launch Angle (degrees)")
+plt.ylabel("Range (m)")
+plt.title("Effect of Launch Angle on Projectile Range")
+plt.legend()
+plt.grid(True)
+plt.show()
 import matplotlib.pyplot as plt
 
 def projectile_range(v0, theta, g=9.81):
@@ -151,5 +168,6 @@ plt.title("Effect of Launch Angle on Projectile Range")
 plt.legend()
 plt.grid()
 plt.show()
+![image](https://github.com/user-attachments/assets/fdffd1cb-55d7-4aa1-95c7-1d4f00f15666)
 
 
